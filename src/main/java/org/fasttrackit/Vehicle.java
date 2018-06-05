@@ -6,9 +6,15 @@ public class Vehicle {
     private String color;
     private double mileage;
     private double fuelLevel;
+    // demonstrating constants
+    public final static String RADIO_CONTROL = "Radio Control";
 
     public Vehicle(String name) {
         this.name = name;
+    }
+
+    public double accelerate(double speed) {
+        return accelerate(speed, 60);
     }
 
     public double accelerate(double speed, double time) {
@@ -48,5 +54,15 @@ public class Vehicle {
 
     public void setFuelLevel(double fuelLevel) {
         this.fuelLevel = fuelLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", mileage=" + mileage +
+                ", fuelLevel=" + fuelLevel +
+                '}';
     }
 }
