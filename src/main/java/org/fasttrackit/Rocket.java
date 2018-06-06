@@ -8,6 +8,7 @@ public class Rocket extends AutoVehicle {
 
     @Override
     public double accelerate(double speed, double time) {
+        System.out.println("Accelerating as a rocket.");
         System.out.println("Vehicle " + getName() + " accelerates with " + speed + " for " + time + " seconds.");
         double traveledDistance = speed * time;
         // rockets are for cheaters

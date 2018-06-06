@@ -1,11 +1,20 @@
 package org.fasttrackit;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
-    private Car firstCompetitor;
-    private Car secondCompetitor;
+    private Vehicle[] competitors = new Vehicle[10];
+    private List<Vehicle> competitorsList = new ArrayList<>();
+    private Vehicle firstCompetitor;
+    private Vehicle secondCompetitor;
 
     public void start() {
+        System.out.println(competitors.length);
+
+
         Car car1 = new Car("Dacia");
         car1.setColor("red");
         car1.setDoorCount(3);
@@ -28,27 +37,56 @@ public class Game {
 
         car2.setEngine(engine2);
 
-        firstCompetitor = car1;
-        secondCompetitor = car2;
+        competitors[0] = car1;
+        competitors[1] = car2;
 
-        car1.accelerate(7.2, 6.9);
+        competitorsList.add(car1);
+        competitorsList.add(car2);
 
-        System.out.println(car1);
+        for (int i = 0; i < competitors.length; i++) {
+            System.out.println("Iteration number " + i);
+            System.out.println(competitors[i]);
+            competitors[i].accelerate(10, 10);
+        }
+
+        for (Vehicle vehicle : competitors) {
+            System.out.println(vehicle);
+        }
+
+        for (int i = 0; i < competitorsList.size(); i++) {
+            System.out.println(competitorsList.get(i));
+        }
+
+        for (Vehicle fdsajfas : competitorsList) {
+            System.out.println(fdsajfas);
+        }
+
+//
+//        firstCompetitor = car1;
+//        secondCompetitor = car2;
+//
+//        car1.accelerate(7.2, 6.9);
+//
+//        System.out.println(car1);
+//
+//        // Polymorphism demonstration
+//        Vehicle rocket = new Rocket("Cheater");
+//        rocket.accelerate(100, 60);
     }
 
-    public Car getFirstCompetitor() {
+    public Vehicle getFirstCompetitor() {
         return firstCompetitor;
     }
 
-    public void setFirstCompetitor(Car firstCompetitor) {
+    public void setFirstCompetitor(Vehicle firstCompetitor) {
         this.firstCompetitor = firstCompetitor;
     }
 
-    public Car getSecondCompetitor() {
+    public Vehicle getSecondCompetitor() {
         return secondCompetitor;
     }
 
-    public void setSecondCompetitor(Car secondCompetitor) {
+    public void setSecondCompetitor(Vehicle secondCompetitor) {
         this.secondCompetitor = secondCompetitor;
     }
 }
