@@ -12,6 +12,8 @@ public class Game {
     public static final int INITIAL_FUEL_LEVEL = 300;
     public static final int LOWER_MILEAGE_BOUND = 3;
     public static final int UPPER_MILEAGE_BOUND = 20;
+    public static final double TRACK_LENGTH = 500;
+
     private Vehicle[] competitors = new Vehicle[10];
     private List<Vehicle> competitorsList = new ArrayList<>();
     private Vehicle firstCompetitor;
@@ -19,6 +21,7 @@ public class Game {
 
     public void start() {
         initCompetitors();
+        determineWinner();
 
 
 //        System.out.println(competitors.length);
@@ -81,6 +84,25 @@ public class Game {
 //        // Polymorphism demonstration
 //        Vehicle rocket = new Rocket("Cheater");
 //        rocket.accelerate(100, 60);
+    }
+
+    private void determineWinner() {
+        boolean winnerUnknown = true;
+
+        while (winnerUnknown) {
+            for (int i = 0; i < competitorsList.size(); i++) {
+                System.out.println("Enter acceleration speed for player " + (i + 1));
+                int accelerationSpeed = readAndCheckInt();
+                double traveledDistance = competitorsList.get(i).accelerate(accelerationSpeed);
+
+                if (traveledDistance >= TRACK_LENGTH) {
+                    System.out.println("Congrats! Player " + (i + 1) + " won the game!");
+                    winnerUnknown = false;
+                    break;
+                }
+            }
+        }
+
     }
 
     private void initCompetitors() {
